@@ -24,16 +24,21 @@ public static void main(String args[]) {
       case 1:
       password = scan.nextLine();
       System.out.println("Your password: " + password);
+      break;
       case 2:
       // Read directories on FTP Server
+        break;
       case 3:
       // Upload file
+        break;
       case "q":
       // Close FTP connection
       // Return
       tcpHandling.closeCommunication;
+      break;
       return;
     }
   } while (!menuAnswer.equals("q")); // End of loop
-        ''
+        '
+        '
 }
