@@ -12,8 +12,6 @@ String password = "anon123";
 // Get serverName
 String serverName = "HOSTNAME";
 // Create menu
-
-
   do {
     System.out.println("Connected to: " + serverName);
     System.out.println("FTP Client Menu:");
