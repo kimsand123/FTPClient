@@ -19,14 +19,9 @@ class TCPClient {
 
     // String data which will be sent to FTP server
 
-
-
     // Wait for user input
     sentence = inFromUser.readLine();
     // Send data to FTP server
-
-
-
 
     }
     public String tcpReadStream(){
@@ -39,7 +34,6 @@ class TCPClient {
         e.printStackTrace();
       }
 
-
       try {
         result = inFromServer.readLine();
       } catch (IOException e) {
@@ -47,10 +41,8 @@ class TCPClient {
         e.printStackTrace();
       }
 
-
       return result;
     }
-
 
     public void tcpSendStream (String data) {
       DataOutputStream outToServer = null;
@@ -62,7 +54,6 @@ class TCPClient {
         e.printStackTrace();
       }
 
-
       try {
         outToServer.writeBytes(data + '\n');
       } catch (IOException e) {
@@ -70,9 +61,6 @@ class TCPClient {
         e.printStackTrace();
       }
     }
-
-
-
 
     public void openCommunication(){
       try {

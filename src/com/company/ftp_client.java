@@ -4,16 +4,15 @@ import java.net.*;
 import java.util.Scanner;
 
 public static void main(String args[]) {
-
-// Variables
-Scanner scan = new Scanner(System.in);
-String menuAnswer = null;
-String password = "anon123";
-// Get serverName
-String serverName = "HOSTNAME";
-// Create menu
+  // Variables
+  Scanner scan = new Scanner(System.in);
+  String menuAnswer = null;
+  String username = "anon";
+  String password = "anon123";
+  TCP_Handling tcpHandling = new TCP_Handling;
+  tcpHandling.openCommunication;
   do {
-    System.out.println("Connected to: " + serverName);
+    System.out.println("Connection established");
     System.out.println("FTP Client Menu:");
     System.out.println("Default User: anon");
     System.out.println("Press 1 to add password (Default = anon123)");
@@ -23,16 +22,17 @@ String serverName = "HOSTNAME";
     menuAnswer = scan.nextLine();
     switch(menuAnswer) {
       case 1:
-        password = scan.nextLine();
-        System.out.println("Your password: " + password);
+      password = scan.nextLine();
+      System.out.println("Your password: " + password);
       case 2:
-        // Read directories on FTP Server
+      // Read directories on FTP Server
       case 3:
-        // Upload file
+      // Upload file
       case "q":
-        // Close FTP connection
-        // Return
-        return;
+      // Close FTP connection
+      // Return
+      tcpHandling.closeCommunication;
+      return;
     }
   } while (!menuAnswer.equals("q")); // End of loop
 }
