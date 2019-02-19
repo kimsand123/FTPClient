@@ -9,30 +9,23 @@ class TCPClient {
   private Socket clientSocket;
 
   public static void main(String argv[]) throws Exception {
-    // Variables
-    String sentence;
-    String modifiedSentence;
-    // Code
-    // User input that will be send to FTP server
-    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-    // Create socket (hostname, TCP port)
+  }
 
-    // String data which will be sent to FTP server
+  public String tcpReadStream(){
+    String result="";
+    BufferedReader inFromServer = null;
+    try {
+      inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    } catch (IOException e) {
+      System.out.println("Could not create an inputstream");
+      e.printStackTrace();
+    }
 
     // Wait for user input
     sentence = inFromUser.readLine();
     // Send data to FTP server
 
     }
-    public String tcpReadStream(){
-    String result="";
-      BufferedReader inFromServer = null;
-      try {
-        inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-      } catch (IOException e) {
-        System.out.println("Could not create an inputstream");
-        e.printStackTrace();
-      }
 
       try {
         result = inFromServer.readLine();
@@ -61,6 +54,7 @@ class TCPClient {
         e.printStackTrace();
       }
     }
+  }
 
     public void openCommunication(){
       try {
@@ -70,21 +64,20 @@ class TCPClient {
         e.printStackTrace();
       }
     }
+  }
 
-    public void closeCommunication(){
-      try {
-        clientSocket.close();
-      } catch (IOException e) {
-        System.out.print("Problems closing communication");
-        e.printStackTrace();
-      }
+  public void closeCommunication(){
+    try {
+      clientSocket.close();
+    } catch (IOException e) {
+      System.out.print("Problems closing communication");
+      e.printStackTrace();
     }
+  }
 
-    private ByteArrayOutputStream convertOutToBytesStream(String data){
+  private ByteArrayOutputStream convertOutToBytesStream(String data){
     ByteArrayOutputStream result=null;
-
-
     return result;
-    }
+  }
 
 }
