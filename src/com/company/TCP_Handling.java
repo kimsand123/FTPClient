@@ -4,26 +4,14 @@ package com.company;
 import java.io.*;
 import java.net.*;
 
-class TCPClient {
+class TCP_Handling {
 
   private Socket clientSocket;
 
-  public static void main(String argv[]) throws Exception {
-    // Variables
-    String sentence;
-    String modifiedSentence;
-    // Code
-    // User input that will be send to FTP server
-    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-    // Create socket (hostname, TCP port)
-
-    // String data which will be sent to FTP server
-
-    // Wait for user input
-    sentence = inFromUser.readLine();
-    // Send data to FTP server
+  public TCP_Handling () {
 
     }
+
     public String tcpReadStream(){
     String result="";
       BufferedReader inFromServer = null;
