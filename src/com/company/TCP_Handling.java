@@ -9,7 +9,6 @@ class TCP_Handling {
   private Socket clientSocket;
 
   public TCP_Handling () {
-
     }
 
     public String tcpReadStream(){
@@ -28,7 +27,6 @@ class TCP_Handling {
         System.out.println("Could not read stream from server");
         e.printStackTrace();
       }
-
       return result;
     }
 
@@ -51,12 +49,19 @@ class TCP_Handling {
     }
 
     public void openCommunication(){
+      String host = "ftp.soeborg.it";
+      String username = "soeborg.it";
+      String password = "1OJ*RU6i$";
+      int port = 21;
+
       try {
-        clientSocket = new Socket("hostname",6789);
+        clientSocket = new Socket(host,port);
       } catch (IOException e) {
         System.out.print("Communication could not be opened");
         e.printStackTrace();
       }
+
+
     }
 
     public void closeCommunication(){

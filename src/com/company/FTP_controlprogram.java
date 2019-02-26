@@ -11,15 +11,12 @@ class FTP_controlprogram {
         tcpHandling.openCommunication();
     }
 
-    public void connectToFTPServer() {
-        // Variables
-        Scanner scan = new Scanner(System.in);
-        String menuAnswer = null;
-        String host = "ftp.soeborg.it";
-        String username = "soeborg.it";
-        String password = "1OJ*RU6i$";
-        int port = 21;
+    public String connectToFTPServer() {
+        String returnmessage="";
 
+
+
+        return returnmessage;
     }
 
     public void menu() {
