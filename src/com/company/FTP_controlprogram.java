@@ -1,13 +1,12 @@
 package com.company;
-import java.io.*;
-import java.net.*;
+
 import java.util.Scanner;
 
-class FTP_client {
+class FTP_controlprogram {
 
     TCP_Handling tcpHandling;
 
-    public FTP_client() {
+    public FTP_controlprogram() {
         tcpHandling = new TCP_Handling();
         tcpHandling.openCommunication();
     }
@@ -57,7 +56,9 @@ class FTP_client {
     }
 
     public String downloadFile(String filenameAndPath){
+        String fileData="";
 
+        return fileData;
     }
 
     public void printFile (String file){
