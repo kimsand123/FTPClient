@@ -13,42 +13,61 @@ class FTP_client {
     }
 
     public void connectToFTPServer() {
-    // Variables
-    Scanner scan = new Scanner(System.in);
-    String menuAnswer = null;
-    String host = "ftp.soeborg.it";
-    String username = "soeborg.it";
-    String password = "1OJ*RU6i$";
-    int port = 21;
-
+        // Variables
+        Scanner scan = new Scanner(System.in);
+        String menuAnswer = null;
+        String host = "ftp.soeborg.it";
+        String username = "soeborg.it";
+        String password = "1OJ*RU6i$";
+        int port = 21;
 
     }
 
     public void menu() {
+        int menuAnswer;
+        Scanner scan = new Scanner(System.in);
         do {
             System.out.println("Connection established");
-            System.out.println("FTP Client Menu:");
-            System.out.println("Default User: anon");
-            System.out.println("Press 1 to add password (Default = anon123)");
-            System.out.println("Press 2 to see FTP servers directories");
-            System.out.println("Press 3 to upload test file to FTP server");
-            System.out.println("Press q to close FTP connection and exit");
-            menuAnswer = scan.nextLine();
+            System.out.println("FTP Assignment Menu:");
+            System.out.println("Press 1 to download file 1 from ???? folder and print at most 1kb on screen");
+            System.out.println("Press 2 to download file 2 from ???? folder and print at most 1kb on screen");
+            System.out.println("Press 3 to upload test file to folder");
+            System.out.println("Press 4 to close FTP connection and exit");
+            menuAnswer = scan.nextInt();
             switch (menuAnswer) {
                 case 1:
-                    password = scan.nextLine();
-                    System.out.println("Your password: " + password);
+                    //download file 1
+                    String file1 = downloadFile("filepath/somefilename");
+                    //print 1kb to screen
+                    printFile(file1);
                 case 2:
-                    // Read directories on FTP Server
+                    //download file 2
+                    String file2 = downloadFile("filepath2/somefilename2");
+                    //print 1kb to screen
+                    printFile(file2);
                 case 3:
                     // Upload file
-                case "q":
+                    uploadFile("filepath/somefilename");
+                case 4:
                     // Close FTP connection
-                    // Return
-                    tcpHandling.closeCommunication;
+                    tcpHandling.closeCommunication();
                     return;
             }
-        } while (!menuAnswer.equals("q")); // End of loop
+        } while (true); // End of loop
     }
+
+    public String downloadFile(String filenameAndPath){
+
+    }
+
+    public void printFile (String file){
+
+    }
+
+    public void uploadFile(String filenameAndPath){
+
+    }
+
+
 }
 
