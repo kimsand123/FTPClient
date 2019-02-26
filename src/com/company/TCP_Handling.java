@@ -50,12 +50,10 @@ class TCP_Handling {
 
     public void openCommunication(){
       String host = "ftp.soeborg.it";
-      String username = "soeborg.it";
-      String password = "1OJ*RU6i$";
       int port = 21;
 
       try {
-        clientSocket = new Socket(host,port);
+        clientSocket = new Socket(host, port);
       } catch (IOException e) {
         System.out.print("Communication could not be opened");
         e.printStackTrace();
@@ -74,9 +72,7 @@ class TCP_Handling {
     }
 
     private ByteArrayOutputStream convertOutToBytesStream(String data){
-    ByteArrayOutputStream result=null;
-
-
+      ByteArrayOutputStream result=null;
     return result;
     }
 

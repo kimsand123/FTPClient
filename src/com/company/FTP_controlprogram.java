@@ -12,6 +12,10 @@ class FTP_controlprogram {
     }
 
     public String connectToFTPServer() {
+        String username = "soeborg.it";
+        String password = "1OJ*RU6i$";
+        tcpHandling.openCommunication();
+        
         String returnmessage="";
 
 
