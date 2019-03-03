@@ -4,28 +4,22 @@ package com.company;
 import java.io.*;
 import java.net.*;
 
-class TCPClient {
+class TCP_Handling {
 
   private Socket clientSocket;
 
-  public static void main(String argv[]) throws Exception {
-  }
+  public TCP_Handling () {
+    }
 
-  public String tcpReadStream(){
+    public String tcpReadStream(){
     String result="";
-    BufferedReader inFromServer = null;
-    try {
-      inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-    } catch (IOException e) {
-      System.out.println("Could not create an inputstream");
-      e.printStackTrace();
-    }
-
-    // Wait for user input
-    sentence = inFromUser.readLine();
-    // Send data to FTP server
-
-    }
+      BufferedReader inFromServer = null;
+      try {
+        inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+      } catch (IOException e) {
+        System.out.println("Could not create an inputstream");
+        e.printStackTrace();
+      }
 
       try {
         result = inFromServer.readLine();
@@ -33,7 +27,6 @@ class TCPClient {
         System.out.println("Could not read stream from server");
         e.printStackTrace();
       }
-
       return result;
     }
 
@@ -57,12 +50,17 @@ class TCPClient {
   }
 
     public void openCommunication(){
+      String host = "ftp.soeborg.it";
+      int port = 21;
+
       try {
-        clientSocket = new Socket("hostname",6789);
+        clientSocket = new Socket(host, port);
       } catch (IOException e) {
         System.out.print("Communication could not be opened");
         e.printStackTrace();
       }
+
+
     }
   }
 
@@ -75,8 +73,8 @@ class TCPClient {
     }
   }
 
-  private ByteArrayOutputStream convertOutToBytesStream(String data){
-    ByteArrayOutputStream result=null;
+    private ByteArrayOutputStream convertOutToBytesStream(String data){
+      ByteArrayOutputStream result=null;
     return result;
   }
 
