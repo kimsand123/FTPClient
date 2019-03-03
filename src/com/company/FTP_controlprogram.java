@@ -1,22 +1,46 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 class FTP_controlprogram {
+    String host;
+    String username;
+    String password;
+    int port;
 
     TCP_Handling tcpHandling;
 
-    public FTP_controlprogram() {
-        tcpHandling = new TCP_Handling();
-        tcpHandling.openCommunication();
+    public FTP_controlprogram(String username, String password, String host, int port) {
+
+        this.host = host;
+        this.username = username;
+        this.password = password;
+        this.port = port;
+        tcpHandling = new TCP_Handling(host, port);
     }
 
-    public String connectToFTPServer() {
-        String username = "soeborg.it";
-        String password = "1OJ*RU6i$";
-        tcpHandling.openCommunication();
-        
+    public String connectToFTPServer() throws IOException {
         String returnmessage="";
+
+        tcpHandling.openCommunication();
+        sendFtpCommand("USER " + username);
+        returnmessage = recieveTCPstream();
+        if (!(returnmessage.startsWith("331 "))) {
+            throw new IOException("Unknown response after sending username" + returnmessage);
+        }
+
+        sendFtpCommand("PASS " + password);
+        returnmessage = recieveTCPstream();
+        if(!(returnmessage.startsWith("230"))){
+            throw new IOException("Wrong password");
+        }
+
+        //sendFtpCommand("PASS " + password);
+        //returnmessage = recieveTCPstream();
+        if(!returnmessage.startsWith("230 ")){
+            throw new IOException("You where not able to login with supplied password");
+        }
 
 
 
@@ -70,6 +94,24 @@ class FTP_controlprogram {
 
     }
 
+    public void sendFtpCommand(String command){
+        tcpHandling.tcpSendStream(command);
+    }
 
+    public String closeFtp(){
+        String result="";
+        sendFtpCommand("close");
+        return result;
+    }
+
+    public String closeTcp(){
+        String result="";
+        tcpHandling.closeCommunication();
+        return result;
+    }
+
+    public String recieveTCPstream(){
+        return tcpHandling.tcpReadStream();
+    }
 }
 

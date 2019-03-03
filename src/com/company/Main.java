@@ -1,17 +1,28 @@
 package com.company;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
-	FTP_controlprogram ftpProgram = new FTP_controlprogram();
-	//ftpProgram.menu();
+    public static void main(String[] args) throws IOException {
+		String username = "ftp";
+		String password = "dtutest123!";
+		String host = "127.0.0.1";
+		int port = 21;
 
-	TCP_Handling tcpCom = new TCP_Handling();
+		/*String username = "soeborg.it";
+		String password = "1OJ*RU6i$";
+		String host = "ftp.soeborg.it";
+		int port = 21;*/
+		FTP_controlprogram ftpProgram = new FTP_controlprogram(username, password, host, port);
 
-	tcpCom.openCommunication();
-		tcpCom.tcpSendStream("HELO\n");
-		System.out.println(tcpCom.tcpReadStream());
-	tcpCom.closeCommunication();
+
+
+		ftpProgram.connectToFTPServer();
+		ftpProgram.recieveTCPstream();
+		ftpProgram.closeFtp();
+		ftpProgram.closeTcp();
+
 
 
 
