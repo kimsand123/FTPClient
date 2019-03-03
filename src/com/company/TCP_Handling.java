@@ -47,7 +47,7 @@ class TCP_Handling {
         e.printStackTrace();
       }
     }
-  }
+
 
     public void openCommunication(){
       String host = "ftp.soeborg.it";
@@ -62,7 +62,7 @@ class TCP_Handling {
 
 
     }
-  }
+  
 
   public void closeCommunication(){
     try {
@@ -73,9 +73,9 @@ class TCP_Handling {
     }
   }
 
-    private ByteArrayOutputStream convertOutToBytesStream(String data){
+    /*private ByteArrayOutputStream convertOutToBytesStream(String data){
       ByteArrayOutputStream result=null;
     return result;
-  }
+  }*/
 
 }
