@@ -24,8 +24,8 @@ class FTP_controlprogram {
         String returnmessage="";
 
         tcpHandling.openCommunication();
-        sendFtpCommand("USER " + username);
-        returnmessage = recieveTCPstream();
+
+        returnmessage = sendFtpCommand("USER " + username);
         if (!(returnmessage.startsWith("331 "))) {
             throw new IOException("Unknown response after sending username" + returnmessage);
         }
@@ -36,13 +36,11 @@ class FTP_controlprogram {
             throw new IOException("Wrong password");
         }
 
-        //sendFtpCommand("PASS " + password);
-        //returnmessage = recieveTCPstream();
+        /*sendFtpCommand("PASS " + password);
+        returnmessage = recieveTCPstream();
         if(!returnmessage.startsWith("230 ")){
             throw new IOException("You where not able to login with supplied password");
-        }
-
-
+        }*/
 
         return returnmessage;
     }
@@ -94,8 +92,8 @@ class FTP_controlprogram {
 
     }
 
-    public void sendFtpCommand(String command){
-        tcpHandling.tcpSendStream(command);
+    public String sendFtpCommand(String command){
+        return tcpHandling.tcpSendStream(command);
     }
 
     public String closeFtp(){
@@ -113,5 +111,9 @@ class FTP_controlprogram {
     public String recieveTCPstream(){
         return tcpHandling.tcpReadStream();
     }
+
+    /*public String recieveSingleLine(){
+        return tcpHandling.readSingleLine();
+    }*/
 }
 
