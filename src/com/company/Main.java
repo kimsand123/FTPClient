@@ -7,7 +7,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
     // Variables - Connection information
     String username = "ftp";
-    String password = "dtutest123!";
+    String password = "test";
     String host = "127.0.0.1";
     int port = 21;
 

@@ -1,8 +1,6 @@
 package com.company;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.*;
-import java.util.stream.Stream;
 
 class TCP_Handling {
   String host;
@@ -44,8 +42,7 @@ class TCP_Handling {
 
     try {
       outToServer = new DataOutputStream(clientSocket.getOutputStream());
-      outToServer.writeBytes(data + '\n');
-
+      outToServer.writeBytes(data );
     } catch (IOException e) {
       System.out.println("Could not establish DataOutputStream");
       e.printStackTrace();
@@ -59,7 +56,6 @@ class TCP_Handling {
     String message="";
     try {
       clientSocket = new Socket(host, port);
-      //message=tcpReadStream();
     } catch (IOException e) {
       System.out.print("Communication could not be opened");
       e.printStackTrace();
