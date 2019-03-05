@@ -26,21 +26,22 @@ class FTP_controlprogram {
     tcpHandling.openCommunication();
 
     returnmessage = sendFtpCommand("USER " + username);
-    if (!(returnmessage.startsWith("331 "))) {
+    System.out.println("tghisone"+returnmessage);
+    /*if (!(returnmessage.startsWith("331 "))) {
       throw new IOException("Unknown response after sending username" + returnmessage);
-    }
-
+    }*/
+    //System.out.println(returnmessage);
     sendFtpCommand("PASS " + password);
     returnmessage = recieveTCPstream();
     if(!(returnmessage.startsWith("230"))){
       throw new IOException("Wrong password");
     }
 
-    /*sendFtpCommand("PASS " + password);
+    sendFtpCommand("PASS " + password);
     returnmessage = recieveTCPstream();
     if(!returnmessage.startsWith("230 ")){
     throw new IOException("You where not able to login with supplied password");
-  }*/
+  }
 
   return returnmessage;
 }
@@ -107,6 +108,28 @@ public String closeTcp(){
   tcpHandling.closeCommunication();
   return result;
 }
+
+public String requestFileTransfer (){
+    String message="";
+
+    return message;
+
+}
+
+public String changeDirectory (String dir){
+    String message="";
+      sendFtpCommand(dir);
+    return message;
+}
+/*
+public String getFile (String file){
+    String message="";
+    String ftpCommand="";
+
+    sendFtpCommand("GET " +
+
+    return message;
+}*/
 
 public String recieveTCPstream(){
   return tcpHandling.tcpReadStream();

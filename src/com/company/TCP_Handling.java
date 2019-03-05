@@ -9,45 +9,35 @@ class TCP_Handling {
   int port;
   private Socket clientSocket;
 
+  //Constructor makes an object with a host IP and a portnumber.
   public TCP_Handling(String host, int port) {
     this.host = host;
     this.port = port;
   }
 
+  //Reads a TCP stream
   public String tcpReadStream(){
     StringBuilder endResult=new StringBuilder();
-    String character="";
-    int length=0;
+    String line="";
     BufferedReader inFromServer = null;
-    Stream<String> message="";
-    String[] messagearray;
+    String result="";
 
     try {
       inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-      //inFromServer.mark(1);
-      message = inFromServer.lines();
-      messagearray = (String[])message.toArray();
-      int n=0;
-      while ( true) {
 
-        if (messagearray[n].equals("\\")) {
-          if ((messagearray[n+1].equals("u"))) {
-            break;
-          }
-          endResult.append(messagearray[n]);
-          n++;
-          break;
-        }
+      while ((line=inFromServer.readLine()) != null) {
+        result=line;
+        System.out.println(result);
       }
-      inFromServer.close();
     } catch (IOException e) {
       System.out.println("Could not create an inputstream");
       e.printStackTrace();
     }
-    return endResult.toString();
+
+    return result ;
   }
 
-
+  //Used for sending data over TCP
   public String tcpSendStream(String data) {
     DataOutputStream outToServer = null;
     String result="";
@@ -55,7 +45,7 @@ class TCP_Handling {
     try {
       outToServer = new DataOutputStream(clientSocket.getOutputStream());
       outToServer.writeBytes(data + '\n');
-      result=tcpReadStream();
+
     } catch (IOException e) {
       System.out.println("Could not establish DataOutputStream");
       e.printStackTrace();
@@ -64,12 +54,12 @@ class TCP_Handling {
     return result;
   }
 
-
+  //Used to open a TCP communication connection.
   public String openCommunication() {
     String message="";
     try {
       clientSocket = new Socket(host, port);
-      message=tcpReadStream();
+      //message=tcpReadStream();
     } catch (IOException e) {
       System.out.print("Communication could not be opened");
       e.printStackTrace();
@@ -77,7 +67,7 @@ class TCP_Handling {
     return message;
   }
 
-
+  //Used to close a TCP communication connection.
   public void closeCommunication() {
     try {
       clientSocket.close();

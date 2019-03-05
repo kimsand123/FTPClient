@@ -19,6 +19,11 @@ public class Main {
 
     // Call function. Connect to FTP Server
     ftpProgram.connectToFTPServer();
+
+
+    ftpProgram.changeDirectory("folder1");
+
+
     // Call function. Get TCP Stream
     ftpProgram.recieveTCPstream();
     // Call function. Close ftp connection
