@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FTPClient.iml" filepath="$PROJECT_DIR$/.idea/FTPClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FTPClient2.iml" filepath="$PROJECT_DIR$/FTPClient2.iml" />
     </modules>
   </component>
 </project>
