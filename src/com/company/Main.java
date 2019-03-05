@@ -22,7 +22,9 @@ public class Main {
 
 
     ftpProgram.changeDirectory("folder1");
-
+    ftpProgram.requestFileTransfer();
+    ftpProgram.calculatePortNumber();
+    //ftpProgram.getFile("Testfile1.txt");
 
     // Call function. Get TCP Stream
     ftpProgram.recieveTCPstream();

@@ -25,13 +25,15 @@ class TCP_Handling {
 
       while ((line=inFromServer.readLine()) != null) {
         result=line;
+        //Trying to store the message to calculate the portnumber in a singleton.
+        MessageSingleton.getInstance().message=result;
+        MessageSingleton.getInstance().messageyesno=true;
         System.out.println(result);
       }
     } catch (IOException e) {
       System.out.println("Could not create an inputstream");
       e.printStackTrace();
     }
-
     return result ;
   }
 
@@ -47,7 +49,6 @@ class TCP_Handling {
       System.out.println("Could not establish DataOutputStream");
       e.printStackTrace();
     }
-
     return result;
   }
 

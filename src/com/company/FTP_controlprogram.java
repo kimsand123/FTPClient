@@ -99,7 +99,7 @@ class FTP_controlprogram {
 
   public String closeFtp(){
     String result="";
-    sendFtpCommand("close");
+    sendFtpCommand("QUIT");
     return result;
   }
 
@@ -111,9 +111,33 @@ class FTP_controlprogram {
 
   public String requestFileTransfer (){
     String message="";
-
+        sendFtpCommand("TYPE A");
+        sendFtpCommand("PASV");
     return message;
+  }
 
+  /*227 Entering Passive Mode (10,20,1,25,19,15)
+  The first four numbers are the IP address, and
+  the last two are the port number.
+  To calculate the port number, use the formula:
+  {(first value x [2^8]) + second value}.
+  In the example it will be (19 x 256) + 15 = 4879.*/
+  public String calculatePortNumber(){
+    String message="";
+    int nr1=0;
+    int nr2=0;
+    String[] numbers;
+    int amountOfNumbers = 0;
+
+    sendFtpCommand("PASV");
+    if(MessageSingleton.getInstance().messageyesno){
+      numbers = MessageSingleton.getInstance().message.split(",");
+      amountOfNumbers = numbers.length;
+      port = (256*Integer.parseInt(numbers[amountOfNumbers-2])) + Integer.parseInt(numbers[amountOfNumbers-1]);
+      System.out.println("port "+ port);
+      MessageSingleton.getInstance().messageyesno=false;
+    }
+    return message;
   }
 
   public String changeDirectory (String dir){
@@ -126,7 +150,7 @@ public String getFile (String file){
     String message="";
     String ftpCommand="";
 
-    sendFtpCommand("GET " +
+    sendFtpCommand("RETR " + file);
 
     return message;
 }*/
