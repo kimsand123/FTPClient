@@ -40,27 +40,12 @@ class FTP_Client {
     /*tcpSendStream("TYPE A", commandSocket);
     System.out.println(tcpReadStream(commandSocket));*/
 
-    //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
-    calculatePortNumber(requestPassiveFTP());
-    System.out.println(dataport);
 
-    //Sending the FTP command and file for upload
-    file = new File("c:\\","Testfile3.txt");
-    setFileForUpload(file);
-    //System.out.println(tcpReadStream(commandSocket));
-
-
-    //Opening a communication line for Data communication with the dataSocket
-    openDataCommunication();
-
-    uploadfile(file);
-
-    System.out.println(tcpReadStream(commandSocket));
 
 
   }
 
-  public void menu() {
+  public void menu() throws Exception {
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
     do {
@@ -91,10 +76,23 @@ class FTP_Client {
           //print 1kb to screen
           printFile(file2);
         case 3:
-          // Upload file
-          //setFileForUpload("Testfile3.txt");
+          / //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+          calculatePortNumber(requestPassiveFTP());
+          System.out.println(dataport);
+
+          //Sending the FTP command and file for upload
+          file = new File("c:\\","Testfile3.txt");
+          setFileForUpload(file);
+
+          //Opening a communication line for Data communication with the dataSocket
+          openDataCommunication();
+
+          //Doing the transfer
+          uploadfile(file);
+          System.out.println(tcpReadStream(commandSocket));
         case 4:
-          // Close FTP connection
+          closeDataCommunication();
+          closeCommunication();
           return;
       }
     } while (true); // End of loop
