@@ -16,7 +16,7 @@ class FTP_Client {
   BufferedReader readCommand = null;
   BufferedWriter writeCommand = null;
 
-  BufferedReader readData = null;
+  BufferedInputStream readData = null;
   BufferedOutputStream writeData = null;
 
   File file;
@@ -37,10 +37,6 @@ class FTP_Client {
     tcpSendStream("PASS " + password, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
 
-    /*tcpSendStream("TYPE A", commandSocket);
-    System.out.println(tcpReadStream(commandSocket));*/
-
-
 
 
   }
@@ -59,29 +55,41 @@ class FTP_Client {
       switch (menuAnswer) {
         case 1:
           //download file 1
+          //Change to correct folder
           changeDirectory("folder1");
           System.out.println(tcpReadStream(commandSocket));
+          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+          calculatePortNumber(requestPassiveFTP());
+          System.out.println(dataport);
 
+          //Sending the FTP command and file for upload
+          file = new File("c:\\resultat\\","Testfile1.txt");
+          setFileForDownload(file);
+
+          //Opening a communication line for Data communication with the dataSocket
           openDataCommunication();
-          getFile("Testfile1");
-          String file1 = downloadFile("filepath/somefilename");
+
+          //Doing the transfer
+          downloadFile(file);
+          System.out.println(tcpReadStream(commandSocket));
+
           //print 1kb to screen
-          printFile(file1);
+          //printFile(file1);
           closeDataCommunication();
         case 2:
           //download file 2
           changeDirectory("folder2");
           System.out.println(tcpReadStream(commandSocket));
-          String file2 = downloadFile("filepath2/somefilename2");
+          //String file2 = downloadFile("filepath2/somefilename2");
           //print 1kb to screen
-          printFile(file2);
+          //printFile(file2);
         case 3:
-          / //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
           System.out.println(dataport);
 
           //Sending the FTP command and file for upload
-          file = new File("c:\\","Testfile3.txt");
+          file = new File("c:\\resultat\\","Testfile3.txt");
           setFileForUpload(file);
 
           //Opening a communication line for Data communication with the dataSocket
@@ -121,11 +129,25 @@ class FTP_Client {
 
   }
 
+  private void setFileForDownload(File file) {
+    tcpSendStream("RETR " + file.getName(), commandSocket);
+  }
 
-  private String downloadFile(String s) {
-    String file="";
-
-    return file;
+  private void downloadFile(File file) throws Exception{
+    FileOutputStream fileOutput = new FileOutputStream(file);
+    BufferedOutputStream fileData = new BufferedOutputStream(fileOutput);
+    readData = new BufferedInputStream(dataSocket.getInputStream());
+    byte[] buffer = new byte[4096];
+    int dataRead = 0;
+    while (true) {
+      if (!((dataRead = readData.read(buffer)) != -1)) break;
+      fileData.write(buffer);
+      fileData.flush();
+      fileData.close();
+    }
+    fileData.flush();
+    fileData.close();
+    System.out.println(tcpReadStream(commandSocket));
   }
 
   private void printFile(String file2) {
