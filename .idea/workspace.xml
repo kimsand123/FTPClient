@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3039bfc-1cb9-489f-b613-c23c200ea2ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/FTP_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/FTP_Client.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="357">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,12 +32,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state relative-caret-position="26">
+              <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3037#3038#0" expanded="true" />
                 <element signature="e#3095#3096#0" expanded="true" />
+                <element signature="e#4291#4292#0" expanded="true" />
+                <element signature="e#4355#4356#0" expanded="true" />
                 <element signature="e#5320#5321#0" expanded="true" />
                 <element signature="e#5372#5373#0" expanded="true" />
                 <element signature="e#5410#5411#0" expanded="true" />
@@ -86,10 +89,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="y" value="16" />
-    <option name="width" value="980" />
-    <option name="height" value="1090" />
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -181,10 +183,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="13" width="784" height="872" extended-state="0" />
+    <frame x="-6" y="0" width="781" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09530387" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1331484" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.3295302" />
@@ -193,8 +195,8 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32837838" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3292683" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.33378378" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.3864865" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.41463414" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.38617885" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -215,33 +217,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/FTP_Client.java</url>
-          <line>107</line>
+          <line>115</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/FTP_Client.java</url>
-          <line>208</line>
-          <properties class="com.company.FTP_Client" method="openDataCommunication">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="37" />
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="(inFromServer.readLine()==null)" language="JAVA" />
-        <watch expression="readSingleLine()" />
-        <watch expression="inFromServer" />
-        <watch expression="&quot;USER &quot; + username + &quot; \n&quot;" />
-        <watch expression="MessageSingleton.getInstance().message" />
-        <watch expression="MessageSingleton.getInstance().messageyesno" />
-        <watch expression="read" />
-        <watch expression="Integer.parseInt(numbers[amountOfNumbers-1]" />
-        <watch expression="Integer.parseInt(numbers[amountOfNumbers-2])" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -294,8 +281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -304,12 +291,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state relative-caret-position="26">
+          <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3037#3038#0" expanded="true" />
             <element signature="e#3095#3096#0" expanded="true" />
+            <element signature="e#4291#4292#0" expanded="true" />
+            <element signature="e#4355#4356#0" expanded="true" />
             <element signature="e#5320#5321#0" expanded="true" />
             <element signature="e#5372#5373#0" expanded="true" />
             <element signature="e#5410#5411#0" expanded="true" />
