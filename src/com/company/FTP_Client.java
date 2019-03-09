@@ -1,6 +1,7 @@
 package com.company;
 import java.io.*;
 import java.net.*;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 class FTP_Client {
@@ -28,14 +29,15 @@ class FTP_Client {
     this.host = host;
     this.port = port;
 
-
     openCommunication();
     tcpReadStream(commandSocket);
+
     //logon FTP server
     tcpSendStream("USER " + username, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
     tcpSendStream("PASS " + password, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
+    System.out.println("Connection established");
 
     menu();
 
@@ -44,12 +46,14 @@ class FTP_Client {
   public void menu() throws Exception {
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
-  do {
-      System.out.println("Connection established");
+    do {
+      System.out.println();
+      System.out.println();
+
       System.out.println("FTP Assignment Menu:");
-      System.out.println("Press 1 to download file 1 from ???? folder and print at most 1kb on screen");
-      System.out.println("Press 2 to download file 2 from ???? folder and print at most 1kb on screen");
-      System.out.println("Press 3 to upload test file to folder");
+      System.out.println("Press 1 to download Testfile1.txt from folder1 and print at most 1kb on screen");
+      System.out.println("Press 2 to download Testfile2.txt from folder2 and print at most 1kb on screen");
+      System.out.println("Press 3 to upload Testfile3.txt to ftp root folder");
       System.out.println("Press 4 to exit");
       menuAnswer = scan.nextInt();
       switch (menuAnswer) {
@@ -125,7 +129,6 @@ class FTP_Client {
     tcpSendStream("STOR " + file.getName(), commandSocket);
   }
 
-
   private void uploadfile(File file)throws Exception {
     InputStream fileInput = new FileInputStream(file);
     BufferedInputStream fileData = new BufferedInputStream(fileInput);
@@ -160,16 +163,16 @@ class FTP_Client {
       if ((dataRead = readData.read(buffer)) == -1) break;
       fileData.write(buffer);
     }
-
     fileData.flush();
     fileData.close();
     System.out.println(tcpReadStream(commandSocket));
   }
 
   private void printFile(File file) {
+
   }
 
-  //Reads a TCP stream
+  //Used for recieving data over TCP
   public String tcpReadStream(Socket socket){
     String line="";
     try {
@@ -217,20 +220,10 @@ class FTP_Client {
     tcpSendStream("CWD " + dir, commandSocket);
   }
 
-  public void getFile (String file){
-    tcpSendStream("RETR " + file, commandSocket);
-  }
-
-  public void closeFtp(){
-    tcpSendStream("QUIT",commandSocket);
-
-  }
-
   public String requestPassiveFTP(){
     tcpSendStream("PASV", commandSocket);
     return (tcpReadStream(commandSocket));
   }
-
 
   //Used to open a TCP communication connection.
   public String openCommunication() {

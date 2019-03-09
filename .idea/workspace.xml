@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f3039bfc-1cb9-489f-b613-c23c200ea2ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/com/company/FTP_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/FTP_Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/TEST.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="374">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,28 +33,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="117" column="31" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="31" />
+            <state relative-caret-position="-102">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4003#4004#0" expanded="true" />
-                <element signature="e#4655#4656#0" expanded="true" />
+                <element signature="e#3888#3889#0" expanded="true" />
+                <element signature="e#4592#4593#0" expanded="true" />
                 <element signature="e#6971#6972#0" expanded="true" />
                 <element signature="e#7023#7024#0" expanded="true" />
-                <element signature="e#7061#7062#0" expanded="true" />
-                <element signature="e#7115#7116#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/TEST.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="153" column="77" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,7 +171,7 @@
     <frame x="-6" y="0" width="781" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1331484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22191401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.3295302" />
@@ -192,7 +180,7 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32791328" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3292683" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.41463414" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.41463414" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.38617885" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -214,7 +202,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/FTP_Client.java</url>
-          <line>161</line>
+          <line>158</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
@@ -272,8 +260,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -282,16 +270,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="117" column="31" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="31" />
+        <state relative-caret-position="-102">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4003#4004#0" expanded="true" />
-            <element signature="e#4655#4656#0" expanded="true" />
+            <element signature="e#3888#3889#0" expanded="true" />
+            <element signature="e#4592#4593#0" expanded="true" />
             <element signature="e#6971#6972#0" expanded="true" />
             <element signature="e#7023#7024#0" expanded="true" />
-            <element signature="e#7061#7062#0" expanded="true" />
-            <element signature="e#7115#7116#0" expanded="true" />
           </folding>
         </state>
       </provider>
