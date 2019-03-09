@@ -37,12 +37,6 @@ class FTP_Client {
     tcpSendStream("PASS " + password, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
 
-    /*tcpSendStream("TYPE A", commandSocket);
-    System.out.println(tcpReadStream(commandSocket));*/
-
-
-
-
   }
 
   public void menu() throws Exception {
@@ -76,7 +70,7 @@ class FTP_Client {
           //print 1kb to screen
           printFile(file2);
         case 3:
-          / //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
           System.out.println(dataport);
 
