@@ -40,12 +40,12 @@ public class TEST {
      * href="http://www.jibble.org/">http://www.jibble.org/ </a>
      *
      */
-    public class SimpleFTP {
+
 
         /**
          * Create an instance of SimpleFTP.
          */
-        public SimpleFTP() {
+        public TEST() {
 
         }
 
@@ -53,8 +53,8 @@ public class TEST {
          * Connects to an FTP server and logs in with the supplied username and
          * password.
          */
-        public synchronized void connect(String host, int port, String user,
-                                         String pass) throws IOException {
+        public synchronized void connect(String user, String pass, String host, int port
+                                         ) throws IOException {
             if (socket != null) {
                 throw new IOException("SimpleFTP is already connected. Disconnect first.");
             }
@@ -183,8 +183,8 @@ public class TEST {
             Socket dataSocket = new Socket(ip, port);
 
             response = readLine();
-            if (!response.startsWith ("125 ")) {
-                //if (!response.startsWith("150 ")) {
+            //if (!response.startsWith ("125 ")) {
+            if (!response.startsWith("150 ")) {
                 throw new IOException("SimpleFTP was not allowed to send the file: "
                         + response);
             }
@@ -259,7 +259,7 @@ public class TEST {
 
 
 
-}
+
 
 
 
