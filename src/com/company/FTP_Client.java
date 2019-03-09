@@ -17,10 +17,12 @@ class FTP_Client {
   BufferedWriter writeCommand = null;
 
   BufferedReader readData = null;
-  BufferedWriter writeData = null;
+  BufferedOutputStream writeData = null;
+
+  File file;
 
   //Constructor makes an object with a host IP and a portnumber and logs on FTP.
-  public FTP_Client(String username, String password, String host, int port) {
+  public FTP_Client(String username, String password, String host, int port) throws Exception{
     this.username = username;
     this.password = password;
     this.host = host;
@@ -34,21 +36,16 @@ class FTP_Client {
     System.out.println(tcpReadStream(commandSocket));
     tcpSendStream("PASS " + password, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
-    //Getting ready for a filetransfer. calculating the dataport to use for
-    //dataSocket.
-    requestFileTransfer();
-    System.out.println(dataport);
-    System.out.println(tcpReadStream(commandSocket));
-    //Opening a communication line for Data communication with the dataSocket
-    openDataCommunication();
 
-    
-    System.out.println(tcpReadStream(commandSocket));
-    uploadFile("C:\\ftp\\Testfile3.txt");
-    System.out.println(tcpReadStream(commandSocket));
+    /*tcpSendStream("TYPE A", commandSocket);
+    System.out.println(tcpReadStream(commandSocket));*/
+
+
+
 
   }
-  public void menu() {
+
+  public void menu() throws Exception {
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
     do {
@@ -64,7 +61,7 @@ class FTP_Client {
           //download file 1
           changeDirectory("folder1");
           System.out.println(tcpReadStream(commandSocket));
-          requestFileTransfer();
+
           openDataCommunication();
           getFile("Testfile1");
           String file1 = downloadFile("filepath/somefilename");
@@ -79,26 +76,59 @@ class FTP_Client {
           //print 1kb to screen
           printFile(file2);
         case 3:
-          // Upload file
-          uploadFile("C:\\ftp\\Testfile3.txt");
+          / //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+          calculatePortNumber(requestPassiveFTP());
+          System.out.println(dataport);
+
+          //Sending the FTP command and file for upload
+          file = new File("c:\\","Testfile3.txt");
+          setFileForUpload(file);
+
+          //Opening a communication line for Data communication with the dataSocket
+          openDataCommunication();
+
+          //Doing the transfer
+          uploadfile(file);
+          System.out.println(tcpReadStream(commandSocket));
         case 4:
-          // Close FTP connection
+          closeDataCommunication();
+          closeCommunication();
           return;
       }
     } while (true); // End of loop
   }
 
-  private void uploadFile(String filename) {
-    tcpSendStream("STOR " + filename, dataSocket);
+  private void setFileForUpload(File file) {
+    tcpSendStream("STOR " + file.getName(), commandSocket);
   }
 
-  private void printFile(String file2) {
+
+  private void uploadfile(File file)throws Exception {
+    InputStream fileInput = new FileInputStream(file);
+    BufferedInputStream fileData = new BufferedInputStream(fileInput);
+    writeData = new BufferedOutputStream(dataSocket.getOutputStream());
+
+    byte[] buffer = new byte[4096];
+    int dataRead = 0;
+    while (true) {
+
+      if (!((dataRead = fileData.read(buffer)) != -1)) break;
+      writeData.write(buffer, 0, dataRead);
+      writeData.flush();
+      writeData.close();
+
+    }
+
   }
+
 
   private String downloadFile(String s) {
     String file="";
 
     return file;
+  }
+
+  private void printFile(String file2) {
   }
 
   //Reads a TCP stream
@@ -126,60 +156,16 @@ class FTP_Client {
     }
   }
 
-  //Used to open a TCP communication connection.
-  public String openCommunication() {
-    String message="";
-    try {
-      commandSocket = new Socket(host, port);
-    } catch (IOException e) {
-      System.out.print("Communication could not be opened");
-      e.printStackTrace();
-    }
-    return message;
-  }
-
-  //Used to open a TCP datacommunication connection.
-  private void openDataCommunication() {
-    try {
-      dataSocket = new Socket(host, dataport);
-    } catch (IOException e) {
-      System.out.print("DataCommunication could not be opened");
-      e.printStackTrace();
-    }
-  }
-
-  //Used to close a TCP communication connection.
-  public void closeCommunication() {
-    try {
-      commandSocket.close();
-    } catch (IOException e) {
-      System.out.print("Problems closing communication");
-      e.printStackTrace();
-    }
-  }
-
-  public void closeDataCommunication() {
-    try {
-      dataSocket.close();
-    } catch (IOException e) {
-      System.out.print("Problems closing communication");
-      e.printStackTrace();
-    }
-  }
-
   /*227 Entering Passive Mode (10,20,1,25,19,15)
   The first four numbers are the IP address, and
   the last two are the port number.
   To calculate the port number, use the formula:
   {(first value x [2^8]) + 6th value}.
   In the example it will be (19 x 256) + 15 = 4879.*/
-  public void calculatePortNumber(){
-    String message;
+  public void calculatePortNumber(String message){
     String[] numbers;
     int amountOfNumbers = 0;
-
-    tcpSendStream("PASV", commandSocket);
-    message = tcpReadStream(commandSocket);
+    System.out.println(message);
     message = message.replace("(","");
     message = message.replace(")","");
     message = message.replace(".","");
@@ -198,12 +184,54 @@ class FTP_Client {
 
   public void closeFtp(){
     tcpSendStream("QUIT",commandSocket);
+
   }
 
-  public void requestFileTransfer (){
-    tcpSendStream("TYPE A", commandSocket);
-    tcpReadStream(commandSocket);
-    calculatePortNumber();
+  public String requestPassiveFTP(){
+    tcpSendStream("PASV", commandSocket);
+    return (tcpReadStream(commandSocket));
+  }
+
+
+  //Used to open a TCP communication connection.
+  public String openCommunication() {
+    String message="";
+    try {
+      commandSocket = new Socket(host, port);
+    } catch (IOException e) {
+      System.out.print("Communication could not be opened");
+      e.printStackTrace();
+    }
+    return message;
+  }
+
+  //Used to open a TCP datacommunication connection.
+  private void openDataCommunication() {
+    try {
+      dataSocket = new Socket(host, dataport);
+      System.out.println(tcpReadStream(commandSocket));
+    } catch (IOException e) {
+      System.out.print("DataCommunication could not be opened");
+      e.printStackTrace();
+    }
+  }
+
+  public void closeCommunication() {
+    try {
+      commandSocket.close();
+    } catch (IOException e) {
+      System.out.print("Problems closing communication");
+      e.printStackTrace();
+    }
+  }
+
+  public void closeDataCommunication() {
+    try {
+      dataSocket.close();
+    } catch (IOException e) {
+      System.out.print("Problems closing communication");
+      e.printStackTrace();
+    }
   }
 
 }
