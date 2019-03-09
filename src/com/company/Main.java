@@ -6,34 +6,17 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
     // Variables - Connection information
-    String username = "ftp";
+    /*String username = "ftp";
     String password = "test";
     String host = "127.0.0.1";
-    int port = 21;
+    int port = 21;*/
 
-    /*String username = "soeborg.it";
+    String username = "soeborg.it";
     String password = "1OJ*RU6i$";
     String host = "ftp.soeborg.it";
-    int port = 21;*/
-    FTP_controlprogram ftpProgram = new FTP_controlprogram(username, password, host, port);
+    int port = 21;
 
-    // Call function. Connect to FTP Server
-    ftpProgram.connectToFTPServer();
-
-
-    ftpProgram.changeDirectory("folder1");
-    ftpProgram.requestFileTransfer();
-    ftpProgram.calculatePortNumber();
-    //ftpProgram.getFile("Testfile1.txt");
-
-    // Call function. Get TCP Stream
-    ftpProgram.recieveTCPstream();
-    // Call function. Close ftp connection
-    ftpProgram.closeFtp();
-    // Call function, Close TCP connection
-    ftpProgram.closeTcp();
-
-    
+    FTP_Client connection = new FTP_Client(username, password, host, port);
 
 
   }
