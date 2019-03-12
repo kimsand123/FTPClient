@@ -1,7 +1,6 @@
 package com.company;
 import java.io.*;
 import java.net.*;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 class FTP_Client {
@@ -21,6 +20,8 @@ class FTP_Client {
   BufferedOutputStream writeData = null;
 
   File file;
+
+  String OS="";
 
   //Constructor makes an object with a host IP and a portnumber and logs on FTP.
   public FTP_Client(String username, String password, String host, int port) throws Exception{
@@ -44,6 +45,8 @@ class FTP_Client {
   }
 
   public void menu() throws Exception {
+    OS = System.getProperty("os.name");
+    System.out.println(OS);
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
     do {
@@ -173,6 +176,7 @@ class FTP_Client {
       for(int counter=0;counter < 1024;counter++){
         if (buffer[counter]==0){
           System.out.println();
+          System.out.println("Number of bytes written to screen: " + counter);
           return;
         }
         System.out.print((char)buffer[counter]);
@@ -186,6 +190,8 @@ class FTP_Client {
 
     fileData.flush();
     fileData.close();
+    System.out.println();
+    System.out.println("Number of bytes written to screen: 1024");
     System.out.println(tcpReadStream(commandSocket));
   }
 
