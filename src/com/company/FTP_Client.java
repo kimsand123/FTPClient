@@ -163,6 +163,12 @@ class FTP_Client {
       if ((dataRead = readData.read(buffer)) == -1) break;
       fileData.write(buffer);
     }
+    //Her printes ud... dette skal laves om
+    for(int counter = 0;counter<buffer.length;counter++){
+      System.out.println(buffer[counter]);
+    }
+    System.out.println("bugger" + buffer.length);
+    //
     fileData.flush();
     fileData.close();
     System.out.println(tcpReadStream(commandSocket));
