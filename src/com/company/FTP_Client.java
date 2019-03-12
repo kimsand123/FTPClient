@@ -9,19 +9,14 @@ class FTP_Client {
   int dataport;
   String username;
   String password;
-
   Socket commandSocket = null;
   Socket dataSocket = null;
-
   BufferedReader readCommand = null;
   BufferedWriter writeCommand = null;
-
   BufferedInputStream readData = null;
   BufferedOutputStream writeData = null;
-
   File file;
   String path="";
-
   String OS="";
 
   //Constructor makes an object with a host IP and a portnumber and logs on FTP.
@@ -30,31 +25,25 @@ class FTP_Client {
     this.password = password;
     this.host = host;
     this.port = port;
-
     openCommunication();
     tcpReadStream(commandSocket);
-
     //logon FTP server
     tcpSendStream("USER " + username, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
     tcpSendStream("PASS " + password, commandSocket);
     System.out.println(tcpReadStream(commandSocket));
     System.out.println("Connection established");
-
     menu();
-
   }
 
   public void menu() throws Exception {
     //check which OS and change the path accordingly
-
     System.out.println(OS);
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
     do {
       System.out.println();
       System.out.println();
-
       System.out.println("FTP Assignment Menu:");
       System.out.println("Press 1 to download Testfile1.txt from folder1 and print at most 1kb on screen");
       System.out.println("Press 2 to download Testfile2.txt from folder2 and print at most 1kb on screen");
@@ -69,21 +58,16 @@ class FTP_Client {
         System.out.println(tcpReadStream(commandSocket));
         //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
         calculatePortNumber(requestPassiveFTP());
-
         //Sending the FTP command and file for upload
         file = new File(path, "Testfile1.txt");
         setFileForDownload(file);
-
         //Opening a communication line for Data communication with the dataSocket
         openDataCommunication();
-
         //Doing the transfer
         downloadFile(file);
-
         //print 1kb to screen
         // printFile(file);
         getItemSize(file);
-
         break;
         case 2:
         //download file 2
@@ -91,40 +75,29 @@ class FTP_Client {
         System.out.println(tcpReadStream(commandSocket));
         //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
         calculatePortNumber(requestPassiveFTP());
-
         //Sending the FTP command and file for upload
         file = new File(path, "Testfile2.txt");
         setFileForDownload(file);
-
         //Opening a communication line for Data communication with the dataSocket
         openDataCommunication();
-
         //Doing the transfer
         downloadFile(file);
-
         // print 1kb to screen
         // printFile(file);
-
         getItemSize(file);
-
         break;
         case 3:
         //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
         calculatePortNumber(requestPassiveFTP());
-
         //Sending the FTP command and file for upload
         file = new File("c:\\resultat\\", "Testfile3.txt");
         setFileForUpload(file);
-
         //Opening a communication line for Data communication with the dataSocket
         openDataCommunication();
-
         //Doing the transfer
         uploadfile(file);
-
         // Print file Size
         getItemSize(file);
-
         break;
         case 4:
         closeDataCommunication();
@@ -144,17 +117,14 @@ class FTP_Client {
     InputStream fileInput = new FileInputStream(file);
     BufferedInputStream fileData = new BufferedInputStream(fileInput);
     writeData = new BufferedOutputStream(dataSocket.getOutputStream());
-
     byte[] buffer = new byte[4096];
     int dataRead = 0;
     StringBuilder printToScreen=null;
     while (true) {
-
       if (!((dataRead = fileData.read(buffer)) != -1)) break;
       writeData.write(buffer, 0, dataRead);
       writeData.flush();
       writeData.close();
-
     }
     System.out.println(tcpReadStream(commandSocket));
   }
@@ -182,14 +152,9 @@ class FTP_Client {
           return;
         }
         System.out.print((char)buffer[counter]);
-
       }
       fileData.write(buffer);
     }
-
-
-
-
     fileData.flush();
     fileData.close();
     System.out.println();
@@ -198,7 +163,7 @@ class FTP_Client {
   }
 
   private void printFile(File file) {
-
+      // ???? Hvad laver denne funktion?
   }
 
   //Used for recieving data over TCP
@@ -300,7 +265,6 @@ class FTP_Client {
 
       double bytes = file.length();
       double kilobytes = (bytes / 1024);
-
       // System.out.println("bytes : " + bytes);
       System.out.println("Filesize : " + kilobytes + " Kb");
 
