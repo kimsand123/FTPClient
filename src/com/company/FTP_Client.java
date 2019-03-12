@@ -163,12 +163,27 @@ class FTP_Client {
     BufferedOutputStream fileData = new BufferedOutputStream(fileOutput);
     readData = new BufferedInputStream(dataSocket.getInputStream());
     byte[] buffer = new byte[4096];
+    byte[] tmpbuffer = new byte[1024];
     int dataRead = 0;
 
     while (true) {
+
       if ((dataRead = readData.read(buffer)) == -1) break;
+
+      for(int counter=0;counter < 1024;counter++){
+        if (buffer[counter]==0){
+          System.out.println();
+          return;
+        }
+        System.out.print((char)buffer[counter]);
+
+      }
       fileData.write(buffer);
     }
+
+
+
+
     fileData.flush();
     fileData.close();
     System.out.println(tcpReadStream(commandSocket));
