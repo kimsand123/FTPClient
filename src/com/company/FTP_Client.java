@@ -117,7 +117,7 @@ class FTP_Client {
         //Doing the transfer
         uploadfile(file);
 
-        // Print 1kb to screen
+        // Print file Size
         getItemSize(file);
 
         break;
@@ -294,7 +294,7 @@ class FTP_Client {
       double kilobytes = (bytes / 1024);
 
       // System.out.println("bytes : " + bytes);
-      System.out.println("kilobytes : " + kilobytes);
+      System.out.println("Filesize : " + kilobytes + " Kb");
 
     }else{
       System.out.println("File does not exists!");
