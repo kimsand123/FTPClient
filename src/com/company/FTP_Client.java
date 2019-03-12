@@ -20,6 +20,7 @@ class FTP_Client {
   BufferedOutputStream writeData = null;
 
   File file;
+  String path="";
 
   String OS="";
 
@@ -45,7 +46,12 @@ class FTP_Client {
   }
 
   public void menu() throws Exception {
-    OS = System.getProperty("os.name");
+    //check which OS and change the path accordingly
+    if(System.getProperty("os.name").contains("Windows")){
+      path="%Documents%";
+    }else{
+      path="linuxpath????";
+    }
     System.out.println(OS);
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
@@ -69,7 +75,7 @@ class FTP_Client {
         calculatePortNumber(requestPassiveFTP());
 
         //Sending the FTP command and file for upload
-        file = new File("c:\\resultat\\", "Testfile1.txt");
+        file = new File(path, "Testfile1.txt");
         setFileForDownload(file);
 
         //Opening a communication line for Data communication with the dataSocket
@@ -91,7 +97,7 @@ class FTP_Client {
         calculatePortNumber(requestPassiveFTP());
 
         //Sending the FTP command and file for upload
-        file = new File("c:\\resultat\\", "Testfile2.txt");
+        file = new File(path, "Testfile2.txt");
         setFileForDownload(file);
 
         //Opening a communication line for Data communication with the dataSocket
