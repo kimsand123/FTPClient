@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3039bfc-1cb9-489f-b613-c23c200ea2ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/FTP_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/FTP_Client.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
+            <state relative-caret-position="166">
+              <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3921#3922#0" expanded="true" />
@@ -178,7 +177,7 @@
       <window_info id="Learn" order="3" weight="0.3295302" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32791328" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32746956" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3292683" />
       <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.41407308" />
@@ -203,7 +202,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/FTP_Client.java</url>
-          <line>162</line>
+          <line>175</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
@@ -242,8 +241,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/FTP_Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
+        <state relative-caret-position="166">
+          <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3921#3922#0" expanded="true" />

@@ -44,8 +44,11 @@ class FTP_Client {
   }
 
   public void menu() throws Exception {
-    int menuAnswer;
+    String menuAnswer;
     Scanner scan = new Scanner(System.in);
+    String path;
+    String filename;
+
     do {
       System.out.println();
       System.out.println();
@@ -55,18 +58,22 @@ class FTP_Client {
       System.out.println("Press 2 to download Testfile2.txt from folder2 and print at most 1kb on screen");
       System.out.println("Press 3 to upload Testfile3.txt to ftp root folder");
       System.out.println("Press 4 to exit");
-      menuAnswer = scan.nextInt();
-      switch (menuAnswer) {
+      menuAnswer = scan.nextLine();
+      switch (Integer.parseInt(menuAnswer)) {
         case 1:
           //download file 1
           //Change to correct folder
+
           changeDirectory("../folder1");
           System.out.println(tcpReadStream(commandSocket));
           //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
 
           //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile1.txt");
+          System.out.println("Enter path for file :");
+          path=scan.nextLine();
+          path.replace("\\","\\\\");
+          file = new File(path, "Testfile1.txt");
           setFileForDownload(file);
 
           //Opening a communication line for Data communication with the dataSocket
@@ -87,7 +94,10 @@ class FTP_Client {
           calculatePortNumber(requestPassiveFTP());
 
           //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile2.txt");
+          System.out.println("Enter path for file :");
+          path=scan.nextLine();
+          path.replace("\\","\\\\");
+          file = new File(path, "Testfile2.txt");
           setFileForDownload(file);
 
           //Opening a communication line for Data communication with the dataSocket
@@ -105,7 +115,10 @@ class FTP_Client {
           calculatePortNumber(requestPassiveFTP());
 
           //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile3.txt");
+          System.out.println("Enter path for file :");
+          path = scan.nextLine();
+          path.replace("\\","\\\\");
+          file = new File(path, "Testfile3.txt");
           setFileForUpload(file);
 
           //Opening a communication line for Data communication with the dataSocket
@@ -120,8 +133,8 @@ class FTP_Client {
           closeCommunication();
           return;
       }
-      scan.nextLine();
-    } while (menuAnswer!=4); // End of loop
+
+    } while (!menuAnswer.equals("4")); // End of loop
     scan.close();
   }
 
@@ -167,7 +180,7 @@ class FTP_Client {
     for(int counter = 0;counter<buffer.length;counter++){
       System.out.println(buffer[counter]);
     }
-    System.out.println("bugger" + buffer.length);
+    System.out.println("buffer :" + buffer.length);
     //
     fileData.flush();
     fileData.close();
