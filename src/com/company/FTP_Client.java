@@ -58,67 +58,93 @@ class FTP_Client {
       menuAnswer = scan.nextInt();
       switch (menuAnswer) {
         case 1:
-          //download file 1
-          //Change to correct folder
-          changeDirectory("../folder1");
-          System.out.println(tcpReadStream(commandSocket));
-          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
-          calculatePortNumber(requestPassiveFTP());
+        //download file 1
+        //Change to correct folder
+        changeDirectory("../folder1");
+        System.out.println(tcpReadStream(commandSocket));
+        //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+        calculatePortNumber(requestPassiveFTP());
 
-          //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile1.txt");
-          setFileForDownload(file);
+        //Sending the FTP command and file for upload
+        file = new File("c:\\resultat\\", "Testfile1.txt");
+        setFileForDownload(file);
 
-          //Opening a communication line for Data communication with the dataSocket
-          openDataCommunication();
+        //Opening a communication line for Data communication with the dataSocket
+        openDataCommunication();
 
-          //Doing the transfer
-          downloadFile(file);
+        //Doing the transfer
+        downloadFile(file);
 
-          //print 1kb to screen
-          printFile(file);
+        //print 1kb to screen
+        printFile(file);
 
-          break;
+        break;
         case 2:
-          //download file 2
-          changeDirectory("../folder2");
-          System.out.println(tcpReadStream(commandSocket));
-          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
-          calculatePortNumber(requestPassiveFTP());
+        //download file 2
+        changeDirectory("../folder2");
+        System.out.println(tcpReadStream(commandSocket));
+        //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+        calculatePortNumber(requestPassiveFTP());
 
-          //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile2.txt");
-          setFileForDownload(file);
+        //Sending the FTP command and file for upload
+        file = new File("c:\\resultat\\", "Testfile2.txt");
+        setFileForDownload(file);
 
-          //Opening a communication line for Data communication with the dataSocket
-          openDataCommunication();
+        //Opening a communication line for Data communication with the dataSocket
+        openDataCommunication();
 
-          //Doing the transfer
-          downloadFile(file);
+        //Doing the transfer
+        downloadFile(file);
 
-          //print 1kb to screen
-          printFile(file);
+        // print 1kb to screen
+        // printFile(file);
 
-          break;
+        if(file.exists()){
+
+          double bytes = file.length();
+          double kilobytes = (bytes / 1024);
+          double megabytes = (kilobytes / 1024);
+          double gigabytes = (megabytes / 1024);
+          double terabytes = (gigabytes / 1024);
+          double petabytes = (terabytes / 1024);
+          double exabytes = (petabytes / 1024);
+          double zettabytes = (exabytes / 1024);
+          double yottabytes = (zettabytes / 1024);
+
+          System.out.println("bytes : " + bytes);
+          System.out.println("kilobytes : " + kilobytes);
+          System.out.println("megabytes : " + megabytes);
+          System.out.println("gigabytes : " + gigabytes);
+          System.out.println("terabytes : " + terabytes);
+          System.out.println("petabytes : " + petabytes);
+          System.out.println("exabytes : " + exabytes);
+          System.out.println("zettabytes : " + zettabytes);
+          System.out.println("yottabytes : " + yottabytes);
+        }else{
+          System.out.println("File does not exists!");
+        }
+
+
+        break;
         case 3:
-          //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
-          calculatePortNumber(requestPassiveFTP());
+        //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
+        calculatePortNumber(requestPassiveFTP());
 
-          //Sending the FTP command and file for upload
-          file = new File("c:\\resultat\\", "Testfile3.txt");
-          setFileForUpload(file);
+        //Sending the FTP command and file for upload
+        file = new File("c:\\resultat\\", "Testfile3.txt");
+        setFileForUpload(file);
 
-          //Opening a communication line for Data communication with the dataSocket
-          openDataCommunication();
+        //Opening a communication line for Data communication with the dataSocket
+        openDataCommunication();
 
-          //Doing the transfer
-          uploadfile(file);
+        //Doing the transfer
+        uploadfile(file);
 
-          break;
+        break;
         case 4:
-          closeDataCommunication();
-          closeCommunication();
-          return;
+        closeDataCommunication();
+        closeCommunication();
+        return;
       }
       scan.nextLine();
     } while (menuAnswer!=4); // End of loop
