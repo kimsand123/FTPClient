@@ -76,7 +76,8 @@ class FTP_Client {
         downloadFile(file);
 
         //print 1kb to screen
-        printFile(file);
+        // printFile(file);
+        getItemSize(file);
 
         break;
         case 2:
@@ -99,19 +100,7 @@ class FTP_Client {
         // print 1kb to screen
         // printFile(file);
 
-        if(file.exists()){
-
-          double bytes = file.length();
-          double kilobytes = (bytes / 1024);
-          double megabytes = (kilobytes / 1024);
-
-          // System.out.println("bytes : " + bytes);
-          System.out.println("kilobytes : " + kilobytes);
-
-        }else{
-          System.out.println("File does not exists!");
-        }
-
+        getItemSize(file);
 
         break;
         case 3:
@@ -127,6 +116,9 @@ class FTP_Client {
 
         //Doing the transfer
         uploadfile(file);
+
+        // Print 1kb to screen
+        getItemSize(file);
 
         break;
         case 4:
@@ -277,6 +269,20 @@ class FTP_Client {
     } catch (IOException e) {
       System.out.print("Problems closing communication");
       e.printStackTrace();
+    }
+  }
+
+  public void getItemSize(File file) {
+    if(file.exists()){
+
+      double bytes = file.length();
+      double kilobytes = (bytes / 1024);
+
+      // System.out.println("bytes : " + bytes);
+      System.out.println("kilobytes : " + kilobytes);
+
+    }else{
+      System.out.println("File does not exists!");
     }
   }
 
