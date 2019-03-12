@@ -104,12 +104,9 @@ class FTP_Client {
           double bytes = file.length();
           double kilobytes = (bytes / 1024);
           double megabytes = (kilobytes / 1024);
-          double gigabytes = (megabytes / 1024);
 
-          System.out.println("bytes : " + bytes);
+          // System.out.println("bytes : " + bytes);
           System.out.println("kilobytes : " + kilobytes);
-          System.out.println("megabytes : " + megabytes);
-          System.out.println("gigabytes : " + gigabytes);
 
         }else{
           System.out.println("File does not exists!");
