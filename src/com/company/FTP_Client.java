@@ -47,11 +47,7 @@ class FTP_Client {
 
   public void menu() throws Exception {
     //check which OS and change the path accordingly
-    if(System.getProperty("os.name").contains("Windows")){
-      path="%Documents%";
-    }else{
-      path="linuxpath????";
-    }
+
     System.out.println(OS);
     int menuAnswer;
     Scanner scan = new Scanner(System.in);
