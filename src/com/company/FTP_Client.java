@@ -58,7 +58,6 @@ class FTP_Client {
           //download file 1
           //Change to correct folder
           changeDirectory("../folder1");
-          System.out.println(tcpReadStream(commandSocket));
           //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
 
@@ -86,7 +85,6 @@ class FTP_Client {
         case 2:
           //download file 2
           changeDirectory("../folder2");
-          System.out.println(tcpReadStream(commandSocket));
           //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
 
@@ -113,6 +111,8 @@ class FTP_Client {
 
           break;
         case 3:
+
+          changeDirectory("..");
           //Getting ready for a filetransfer. calculating the dataport to use for dataSocket.
           calculatePortNumber(requestPassiveFTP());
 
@@ -182,10 +182,10 @@ class FTP_Client {
 
     while (true) {
       //clears buffer before filling it.
-      byte[] buffer = new byte[512];
+      byte[] buffer = new byte[2048];
       if (readData.read(buffer) == -1) break;
 
-      /*if(first) {
+      if(first) {
         for (counter = 0; counter < 1024; counter++) {
           if (buffer[counter] == 0) {
             System.out.println();
@@ -196,7 +196,7 @@ class FTP_Client {
 
         }
         first=false;
-      }*/
+      }
       fileData.write(buffer);
     }
 
@@ -257,6 +257,7 @@ class FTP_Client {
 
   public void changeDirectory (String dir){
     tcpSendStream("CWD " + dir, commandSocket);
+    System.out.println(tcpReadStream(commandSocket));
   }
 
   public String requestPassiveFTP(){
