@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Main {
 
   public static void main(String[] args) throws Exception {
-    // Variables - Connection information
-    /*String username = "ftp";
+    /* Variables - Connection information
+    //String username = "ftp";
     String password = "test";
     String host = "127.0.0.1";
     int port = 21;*/
