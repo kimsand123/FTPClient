@@ -1,7 +1,4 @@
-package com.company;
-
-import java.io.File;
-import java.io.IOException;
+package main;
 
 public class Main {
 
