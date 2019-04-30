@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FTPClient:jar">
+    <output-path>C:/FTPClient_jar</output-path>
+    <root id="archive" name="FTPClient.jar">
+      <element id="archive" name="FTPClient.jar">
+        <element id="module-output" name="FTPClient" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
