@@ -1,4 +1,4 @@
-package main;
+import main.FTP_Client;
 
 public class Main {
 
@@ -9,11 +9,12 @@ public class Main {
     String host = "127.0.0.1";
     int port = 21;*/
 
-    String username = "soeborg.it";
-    String password = "1OJ*RU6i$";
-    String host = "ftp.soeborg.it";
+    String username = "test_user";
+    String password = "";
+    String host = "192.168.88.251";
     int port = 21;
 
     FTP_Client connection = new FTP_Client(username, password, host, port);
+
   }
 }
